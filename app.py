@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from pywsip import Prolog
+from pyswip import Prolog
 
 app = Flask(__name__)
 prolog = Prolog()
