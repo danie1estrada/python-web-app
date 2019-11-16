@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    prolog = Prolog()
+    p = Prolog()
     p.consult('knowledge_base.pl')
     resp = { 'stops': [] }
     for i in p.query('route(\'A-71\', X)'):
