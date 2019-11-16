@@ -24,7 +24,7 @@ def get_routes_info():
     }
 
     print("route('{route}', X)")
-    for paradero in p.query("route('{route}', X)"):
+    for paradero in p.query(f"route('{route}', X)"):
         resp["paradas"].append(paradero)
 
     return jsonify(resp)
