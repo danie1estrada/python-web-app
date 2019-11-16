@@ -8,7 +8,7 @@ def main():
     p = Prolog()
     p.consult('knowledge_base.pl')
     resp = { 'stops': [] }
-    for i in p.query('route('A-71', X)'):
+    for i in p.query("route('A-71', X)"):
         resp['stops'].append(i['X'])
 
     return jsonify(resp)
