@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
 from pyswip import Prolog
 
 app = Flask(__name__)
