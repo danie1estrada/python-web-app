@@ -23,7 +23,6 @@ def get_routes_info():
         'paradas': []
     }
 
-    print('route('{route}', X)')
     for paradero in p.query(f"route('{route}', X)"):
         resp['paradas'].append(paradero['X'])
 
