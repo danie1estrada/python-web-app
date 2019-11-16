@@ -13,23 +13,20 @@ def main():
 
     return jsonify(resp)
 
-@app.route('/consult/routes/<route>')
-def get_routes_info(route):
-    # route = request.args.get('route')
+@app.route('/consult/routes')
+def get_routes_info():
+    p = Prolog()
+    p.consult('knowledge_base.pl')
+    route = request.args.get('route')
     resp = {
         'ruta': route,
         'paradas': []
     }
 
-    for paradero in get_query_results('route(\'{route}\', X)'):
+    for paradero in p.query('route(\'{route}\', X)'):
         resp['paradas'].append(paradero)
 
     return jsonify(resp)
-
-def get_query_results(query):
-    p = Prolog()
-    p.consult('knowledge_base.pl')
-    return p.query(query)
 
 if __name__ == '__main__':
     app.run()
