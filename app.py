@@ -3,30 +3,31 @@ from pyswip import Prolog
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route("/")
 def main():
     p = Prolog()
-    p.consult('knowledge_base.pl')
-    resp = { 'stops': [] }
-    for i in p.query('route(\'A-71\', X)'):
-        resp['stops'].append(i['X'])
+    p.consult("knowledge_base.pl")
+    resp = { "stops": [] }
+    for i in p.query("route('A-71', X)"):
+        resp["stops"].append(i["X"])
 
     return jsonify(resp)
 
-@app.route('/consult/routes')
+@app.route("/consult/routes")
 def get_routes_info():
     p = Prolog()
-    p.consult('knowledge_base.pl')
-    route = request.args.get('route')
+    p.consult("knowledge_base.pl")
+    route = request.args.get("route")
     resp = {
-        'ruta': route,
-        'paradas': []
+        "ruta": route,
+        "paradas": []
     }
 
-    for paradero in p.query('route(\'{route}\', X)'):
-        resp['paradas'].append(paradero)
+    print("route('{route}', X)")
+    for paradero in p.query("route('{route}', X)"):
+        resp["paradas"].append(paradero)
 
     return jsonify(resp)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()
