@@ -7,13 +7,13 @@ app = Flask(__name__)
 def get_routes():
     p = Prolog()
     p.consult('knowledge_base.pl')
-    resp = { 'routes': [] }
+    routes = []
 
     for solution in p.query("route('Route', _)"):
-        resp['routes'].append(solution['Route'])
+        routes.append(solution['Route'])
 
-    resp['test'] = str(resp['routes'])
-    resp['routes'] = list(set(resp['routes']))
+    resp['test'] = str(routes)
+    resp['routes'] = list(set(routes))
     return jsonify(resp)
 
 @app.route('/consult/route-info')
