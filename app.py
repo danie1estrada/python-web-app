@@ -12,6 +12,7 @@ def get_routes():
     for solution in p.query("route('Route', _)"):
         routes.append(solution['Route'])
 
+    resp = {}
     resp['test'] = str(routes)
     resp['routes'] = list(set(routes))
     return jsonify(resp)
