@@ -9,7 +9,7 @@ def get_routes():
     p.consult('knowledge_base.pl')
     routes = []
 
-    for solution in p.query("route('Route', _)"):
+    for solution in p.query("route(Route, _)"):
         routes.append(solution['Route'])
 
     resp = {}
