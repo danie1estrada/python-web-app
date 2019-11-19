@@ -4,16 +4,18 @@ from pyswip import Prolog
 app = Flask(__name__)
 
 @app.route('/')
-def main():
+def get_routes():
     p = Prolog()
     p.consult('knowledge_base.pl')
-    resp = { 'stops': [] }
-    for i in p.query("route('A-71', X)"):
-        resp['stops'].append(i['X'])
+    resp = { 'routes': [] }
 
+    for i in p.query("route('Route', _)"):
+        resp['routes'].append(i['Route'])
+
+    resp['routes'] = list(dict.fromkeys(resp['routes']))
     return jsonify(resp)
 
-@app.route('/consult/routes')
+@app.route('/consult/route-info')
 def get_routes_info():
     p = Prolog()
     p.consult('knowledge_base.pl')
