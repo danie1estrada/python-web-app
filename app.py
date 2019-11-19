@@ -44,8 +44,8 @@ def get_directions():
     for solution in p.query(f"from_to('{origin}', '{destination}', Route)"):
         pass
 
-    for solution in p.query(f"schedule('{origin}', '', S)"):
-        pass
+    # for solution in p.query(f"schedule('{origin}', '', S)"):
+    #     pass
         
     return jsonify(response)
 
