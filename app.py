@@ -9,10 +9,10 @@ def get_routes():
     p.consult('knowledge_base.pl')
     resp = { 'routes': [] }
 
-    for i in p.query("route('Route', _)"):
-        resp['routes'].append(i['Route'])
+    for solution in p.query("route('Route', _)"):
+        resp['routes'].append(solution['Route'])
 
-    resp['routes'] = list(dict.fromkeys(resp['routes']))
+    resp['routes'] = list(set(resp['routes']))
     return jsonify(resp)
 
 @app.route('/consult/route-info')
