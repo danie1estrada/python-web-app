@@ -13,6 +13,7 @@ def get_routes():
         resp['routes'].append(solution['Route'])
 
     resp['routes'] = list(set(resp['routes']))
+    resp['test'] = str(resp['routes'])
     return jsonify(resp)
 
 @app.route('/consult/route-info')
