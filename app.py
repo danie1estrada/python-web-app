@@ -3,7 +3,7 @@ from pyswip import Prolog
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/consult/routes')
 def get_routes():
     p = Prolog()
     p.consult('knowledge_base.pl')
@@ -13,7 +13,6 @@ def get_routes():
         routes.append(solution['Route'])
 
     resp = {}
-    resp['test'] = str(routes)
     resp['routes'] = list(set(routes))
     return jsonify(resp)
 
