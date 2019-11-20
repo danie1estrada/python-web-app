@@ -39,6 +39,7 @@ def get_directions():
     destination = request.args.get('destination')
     origin = origin.lower()
     destination = destination.lower()
+    print(origin, destination)
     response = {
         'availableRoutes': []
     }
