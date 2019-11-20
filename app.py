@@ -38,14 +38,12 @@ def get_directions():
     origin = request.args.get('origin')
     destination = request.args.get('destination')
     response = {
-        'availableRoutes': [
-
-        ]
+        'availableRoutes': []
     }
 
     # { route: '', next}
     for solution in p.query(f"from_to('{origin}', '{destination}', Route)"):
-        pass
+        response['availableRoutes'].append(solution['Route'])
 
     # for solution in p.query(f"schedule('{origin}', '', S)"):
     #     pass
