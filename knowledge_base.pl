@@ -1,9 +1,9 @@
 % Facts
 % Routes: route, 
-route('A-71', 'Valle Dorado').
-route('A-71', 'Estacion Delta').
-route('A-35', 'Valle Dorado').
-route('A-35', 'Estacion Delta').
+route('A-71', 'valle dorado').
+route('A-71', 'estacion delta').
+route('A-35', 'valle dorado').
+route('A-35', 'estacion delta').
 
 route('A-10','deportiva').
 route('A-10','tec leon').
