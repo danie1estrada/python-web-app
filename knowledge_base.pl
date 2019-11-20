@@ -13,7 +13,7 @@ route('R-16','centro').
 route('R-16','ciudad gotica').
 
 route('A-98','deportiva').
-route('A-98','IMSS').
+route('A-98','imss').
 
 route('A-48','tec leon').
 
