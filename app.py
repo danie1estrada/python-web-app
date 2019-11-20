@@ -27,7 +27,7 @@ def get_routes_info():
     }
 
     for solution in p.query(f"route('{route}', X)"):
-        resp['stops'].append(solution['X'])
+        response['stops'].append(solution['X'])
 
     return jsonify(response)
 
