@@ -27,7 +27,7 @@ def get_routes_info():
     }
 
     for solution in p.query(f"route('{route}', X)"):
-        response['stops'].append(solution['X'])
+        response['stops'].append(solution['X']).capitalize()
 
     return jsonify(response)
 
@@ -35,15 +35,15 @@ def get_routes_info():
 def get_directions():
     p = Prolog()
     p.consult('knowledge_base.pl')
-    origin = request.args.get('origin')
-    destination = request.args.get('destination')
+    origin = request.args.get('origin').lower()
+    destination = request.args.get('destination').lower()
     response = {
         'availableRoutes': []
     }
 
     # { route: '', next}
     for solution in p.query(f"from_to('{origin}', '{destination}', Route)"):
-        response['availableRoutes'].append(solution['Route'])
+        response['availableRoutes'].append(solution['Route']).capitalize()
 
     # for solution in p.query(f"schedule('{origin}', '', S)"):
     #     pass
