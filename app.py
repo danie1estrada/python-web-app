@@ -35,8 +35,10 @@ def get_routes_info():
 def get_directions():
     p = Prolog()
     p.consult('knowledge_base.pl')
-    origin = request.args.get('origin').lower()
-    destination = request.args.get('destination').lower()
+    origin = request.args.get('origin')
+    destination = request.args.get('destination')
+    origin = origin.lower()
+    destination = destination.lower()
     response = {
         'availableRoutes': []
     }
